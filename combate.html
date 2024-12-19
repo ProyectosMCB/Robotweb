@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combate</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="combate">
+    <h1>Combate</h1>
+    <div id="setup">
+      <label for="nombreRojo">Nombre Rojo:</label>
+      <input type="text" id="nombreRojo" required>
+      <label for="nombreAzul">Nombre Azul:</label>
+      <input type="text" id="nombreAzul" required>
+      <button id="iniciar">Iniciar</button>
+    </div>
+    <div id="combate-area" class="hidden">
+      <div id="cuadros-container"></div>
+      <button id="siguiente">Siguiente</button>
+    </div>
+    <button onclick="window.location.href='index.html'">Regresar al Menú</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

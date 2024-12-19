@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recompensas</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="recompensas.js"></script> <!-- Enlace al archivo de JavaScript -->
+</head>
+<body>
+  <div class="menu">
+    <h1>Recompensas</h1>
+
+    <!-- Formulario para ingresar los jugadores y calcular recompensas -->
+    <div class="recompensa-form">
+      <h2>Ganador y Perdedor</h2>
+      <label for="jugadorGanador">Jugador Ganador:</label>
+      <input type="text" id="jugadorGanador" placeholder="Ingresa el nombre del ganador">
+      <br><br>
+      <label for="jugadorPerdedor">Jugador Perdedor:</label>
+      <input type="text" id="jugadorPerdedor" placeholder="Ingresa el nombre del perdedor">
+      <br><br>
+
+      <!-- Ingreso de rangos -->
+      <label for="rangoGanador">Rango del Ganador:</label>
+      <input type="text" id="rangoGanador" placeholder="Ejemplo: Oro, Diamante">
+      <br><br>
+      <label for="rangoPerdedor">Rango del Perdedor:</label>
+      <input type="text" id="rangoPerdedor" placeholder="Ejemplo: Oro, Diamante">
+      <br><br>
+
+      <!-- Botón para calcular las recompensas -->
+      <button onclick="calcularRecompensas()">Calcular Recompensas</button>
+
+      <!-- Resultados -->
+      <div id="resultados">
+        <h3>Resultados</h3>
+        <p id="resultadoGanador"></p>
+        <p id="resultadoPerdedor"></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

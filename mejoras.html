@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mejoras</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="mejoras">
+    <h1>Mejoras</h1>
+    <div id="formulario-mejoras">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" required>
+      <label for="vidaActual">Vida Actual:</label>
+      <input type="number" id="vidaActual" required>
+      <label for="combateActual">Combate Actual:</label>
+      <input type="number" id="combateActual" required>
+    </div>
+    <div>
+      <button onclick="generarMejora(1)">Mejora +1</button>
+      <button onclick="generarMejora(2)">Mejora +2</button>
+      <button onclick="generarMejora(3)">Mejora +3</button>
+    </div>
+    <div id="resultado-cuadro"></div>
+    <button onclick="window.location.href='index.html'">Regresar al Menú</button>
+  </div>
+  <script src="mejora.js"></script>
+</body>
+</html>
