@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let turnos = [];
   const colores = ['red', 'blue'];
 
-  // Lógica de inicialización del combate
   iniciar.addEventListener('click', () => {
     const nombreRojo = document.getElementById('nombreRojo').value;
     const nombreAzul = document.getElementById('nombreAzul').value;
@@ -25,20 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Evento para mostrar el siguiente turno
   siguiente.addEventListener('click', mostrarTurno);
 
-  // Función para generar los turnos de forma alternada
   function generarTurnos() {
     let lastColor = null;
     let count = 0;
 
-    // Generar hasta 20 turnos alternados, max 2 turnos consecutivos por color
-    for (let i = 0; i < 20; i++) {
+    // Generar turnos alternados sin límite
+    for (let i = 0; i < 100; i++) {
       let color;
       do {
         color = colores[Math.floor(Math.random() * colores.length)];
-      } while (color === lastColor && count >= 2); // Evitar más de 2 turnos consecutivos
+      } while (color === lastColor && count >= 2);
 
       turnos.push(color);
       count = color === lastColor ? count + 1 : 1;
@@ -46,20 +43,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Función para mostrar el siguiente turno en pantalla
   function mostrarTurno() {
-    const color = turnos.shift();  // Sacamos el siguiente turno del array
+    const color = turnos.shift();
     if (color) {
+      // Desaparecer cuadros anteriores
+      const cuadrosPrevios = document.querySelectorAll('.cuadro-turno');
+      cuadrosPrevios.forEach((cuadro) => {
+        cuadro.classList.add('cuadro-desapareciendo');
+        cuadro.addEventListener('animationend', () => cuadro.remove());
+      });
+
+      // Mostrar el nuevo turno
       const cuadro = document.createElement('div');
       cuadro.className = `cuadro-turno ${color}`;
       cuadro.textContent = nombres[color];
-
       cuadrosContainer.appendChild(cuadro);
-
-      // Si ya no hay más turnos, ocultamos el botón "Siguiente"
-      if (turnos.length === 0) {
-        siguiente.classList.add('hidden');
-      }
     }
   }
 });
