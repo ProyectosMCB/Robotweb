@@ -100,3 +100,15 @@ input {
 .cuadro-desapareciendo {
   animation: desaparecer 0.5s ease forwards;
 }
+/* Cuadro del próximo turno */
+.cuadro-turno.siguiente {
+  background-color: #d3d3d3;
+  color: black;
+  font-size: 14px;
+  border: 2px dashed black;
+}
+
+/* Animación de desaparición */
+.cuadro-desapareciendo {
+  animation: desaparecer 0.5s ease forwards;
+}
