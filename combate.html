@@ -10,10 +10,16 @@
   <div class="combate">
     <h1>Combate</h1>
     <div id="setup">
-      <label for="nombreRojo">Nombre Rojo:</label>
-      <input type="text" id="nombreRojo" required>
-      <label for="nombreAzul">Nombre Azul:</label>
-      <input type="text" id="nombreAzul" required>
+      <div class="box red">
+        <label for="nombreRojo">Nombre del jugador:</label>
+        <input type="text" id="nombreRojo" placeholder="Nombre del jugador" required>
+      </div>
+
+      <div class="box blue">
+        <label for="nombreAzul">Nombre del jugador:</label>
+        <input type="text" id="nombreAzul" placeholder="Nombre del jugador" required>
+      </div>
+
       <button id="iniciar">Iniciar</button>
     </div>
     <div id="combate-area" class="hidden">
