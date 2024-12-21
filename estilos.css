@@ -11,12 +11,86 @@ body {
   display: none;
 }
 
-.combate {
-  padding: 20px;
+button {
+  margin: 15px 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button {
-  margin: 10px;
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  transform: scale(0.95); /* Efecto de presionar botón */
+}
+
+h1 {
+  color: #333;
+}
+
+input {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px; /* Tamaño reducido específico */
+  box-sizing: border-box;
+}
+
+/* Combate */
+.combate {
+  padding: 20px;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+#setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+#setup .box {
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 0, 0, 0.2); /* Rojo claro para jugador rojo */
+}
+
+#setup .blue {
+  background-color: rgba(0, 0, 255, 0.2); /* Azul claro para jugador azul */
+}
+
+#setup label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: left;
+  font-size: 16px;
+}
+
+#setup input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+#setup button {
+  margin-top: 20px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
@@ -27,23 +101,15 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+#setup button:hover {
   background-color: #0056b3;
 }
 
-h1 {
-  color: #333;
+#iniciar {
+  display: block;
+  margin: 20px auto;
 }
 
-input {
-  margin: 10px;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-/* Contenedor de cuadros */
 #cuadros-container {
   display: flex;
   gap: 10px;
@@ -53,7 +119,6 @@ input {
   align-items: center;
 }
 
-/* Estilo general de cuadros */
 .cuadro-turno {
   padding: 10px 20px;
   color: white;
@@ -64,7 +129,6 @@ input {
   animation: aparecer 0.5s ease;
 }
 
-/* Colores de cuadro */
 .cuadro-turno.red {
   background-color: red;
 }
@@ -73,7 +137,6 @@ input {
   background-color: blue;
 }
 
-/* Animación de aparición */
 @keyframes aparecer {
   from {
     opacity: 0;
@@ -85,7 +148,6 @@ input {
   }
 }
 
-/* Animación de desaparición */
 @keyframes desaparecer {
   from {
     opacity: 1;
@@ -100,15 +162,75 @@ input {
 .cuadro-desapareciendo {
   animation: desaparecer 0.5s ease forwards;
 }
-/* Cuadro del próximo turno */
-.cuadro-turno.siguiente {
-  background-color: #d3d3d3;
-  color: black;
-  font-size: 14px;
-  border: 2px dashed black;
+
+/* Mejoras */
+.mejoras {
+  padding: 20px;
 }
 
-/* Animación de desaparición */
-.cuadro-desapareciendo {
-  animation: desaparecer 0.5s ease forwards;
+#formulario-mejoras-box {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(173, 216, 230, 0.5); /* Color celeste claro */
+  margin-bottom: 20px;
+  width: 300px;
+  margin: 0 auto;
 }
+
+#formulario-mejoras label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+#formulario-mejoras input {
+  margin-bottom: 15px;
+  width: 100%; /* Asegura que los campos de texto ocupen todo el ancho disponible */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button.mejora1 {
+  background-color: #d3d3d3;
+  color: black; /* Letras negras en mejora +1 */
+}
+
+button.mejora2 {
+  background-color: #87cefa;
+}
+
+button.mejora3 {
+  background-color: gold;
+  color: black;
+}
+
+/* Recompensas */
+.menu {
+  padding: 20px;
+}
+
+.recompensa-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  text-align: left;
+}
+
+.recompensa-form h2 {
+  grid-column: span 2;
+  text-align: center;
+}
+
+.recompensa-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.recompensa-form input {
+  width: 150px; /* Tamaño más pequeño para recompensas */
+}
+
