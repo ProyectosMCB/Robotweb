@@ -15,6 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (nombreRojo && nombreAzul) {
       nombres = { red: nombreRojo, blue: nombreAzul };
+      
+      // Desaparecer cuadros con los nombres
+      const cuadros = document.querySelectorAll('.box');
+      cuadros.forEach((cuadro) => {
+        cuadro.classList.add('cuadro-desapareciendo');
+        cuadro.addEventListener('animationend', () => cuadro.remove()); // Elimina el cuadro tras la animación
+      });
+      
+      // Desaparecer el botón "Iniciar"
+      iniciar.classList.add('cuadro-desapareciendo');
+      iniciar.addEventListener('animationend', () => iniciar.remove()); // Elimina el botón tras la animación
+
+      // Mostrar el área de combate
       setup.classList.add('hidden');
       combateArea.classList.remove('hidden');
       generarTurnos();
@@ -61,3 +74,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
