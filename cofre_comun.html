@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cofre Común</title>
+  <style>
+    body { background: #111; color: white; font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+    .btn { padding: 12px 20px; margin: 10px; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; color: white; background: #333; }
+    .btn:hover { opacity: 0.8; }
+    .grid { display: grid; grid-template-columns: repeat(4, 80px); grid-gap: 15px; justify-content: center; margin-top: 20px; }
+    .slot { background: #222; padding: 20px; border-radius: 10px; font-size: 14px; transition: background 0.3s ease, color 0.3s ease; }
+    .highlight { background: #bbb !important; color: #222 !important; }
+    .won { background: #555 !important; color: #ccc !important; }
+    .results { margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <h2>Apertura Cofre Común</h2>
+  <div class="grid" id="slotsGrid"></div>
+  <button class="btn" onclick="girarRuleta()">Girar</button>
+  <button class="btn" onclick="location.href='cofres_menu.html'">Regresar al Menú de Cofres</button>
+  <div class="results" id="resultados"></div>
+
+  <script>
+    const premiosComun = [
+      'x2 Energía +3', 'x2 Mejora +1', 'x2 Mejora Leyenda +1',
+      '15,000 Monedas', '50 Gemas', 'x2 Energía +5',
+      'x1 Mejora +2', 'x1 Mejora Leyenda +2'
+    ];
+
+    function cargarCofre() {
+      const grid = document.getElementById('slotsGrid');
+      grid.innerHTML = '';
+      premiosComun.forEach(premio => {
+        const div = document.createElement('div');
+        div.className = 'slot';
+        div.textContent = premio;
+        grid.appendChild(div);
+      });
+    }
+
+    async function girarRuleta() {
+      const slots = document.querySelectorAll('.slot');
+      slots.forEach(slot => slot.classList.remove('won'));
+      document.getElementById('resultados').innerHTML = '';
+
+      let ganadores = new Set();
+      let disponibles = [...Array(slots.length).keys()];
+
+      for (let i = 0; i < 2; i++) {
+        const ganadorIndex = await girarUnaVez(disponibles, slots);
+        ganadores.add(ganadorIndex);
+        disponibles = disponibles.filter(x => x !== ganadorIndex);
+        slots[ganadorIndex].classList.add('won');
+        document.getElementById('resultados').innerHTML += `<p>${slots[ganadorIndex].textContent}</p>`;
+        await new Promise(r => setTimeout(r, 500));
+      }
+    }
+
+    async function girarUnaVez(disponibles, slots) {
+      let current = 0;
+      let vueltas = Math.floor(Math.random() * 10) + 20;
+      for (let i = 0; i < vueltas; i++) {
+        slots.forEach(slot => slot.classList.remove('highlight'));
+        slots[current % slots.length].classList.add('highlight');
+        await new Promise(r => setTimeout(r, 100 + i * 5));
+        current++;
+      }
+
+      let ganadorIndex;
+      do {
+        ganadorIndex = (current - 1) % slots.length;
+      } while (!disponibles.includes(ganadorIndex));
+
+      return ganadorIndex;
+    }
+
+    cargarCofre();
+  </script>
+</body>
+</html>

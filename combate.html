@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combate</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    .turn-box {
+      width: 250px;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: bold;
+      color: white;
+      border-radius: 30px;
+      margin: 40px auto;
+      transform: scale(1);
+      transition: transform 0.4s ease, background 0.4s ease;
+    }
+    .btn {
+      padding: 12px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      background: #555;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background: #777;
+    }
+    .input-names select {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Combate</h2>
+  <div class="input-names">
+    <select id="jugador1">
+      <option value="Misael">Misael</option>
+      <option value="Didier">Didier</option>
+      <option value="Arjen">Arjen</option>
+      <option value="Uziel">Uziel</option>
+    </select>
+    <select id="jugador2">
+      <option value="Misael">Misael</option>
+      <option value="Didier">Didier</option>
+      <option value="Arjen">Arjen</option>
+      <option value="Uziel">Uziel</option>
+    </select>
+    <button class="btn" onclick="iniciarTurnos()">Aceptar</button>
+  </div>
+  <div id="turn-container" style="display:none;">
+    <div id="turn-box" class="turn-box">Turno</div>
+    <button class="btn" onclick="siguienteTurno()">Seguir</button>
+  </div>
+  <button class="btn" onclick="location.href='index.html'">Volver al Menú</button>
+
+  <script>
+    let jugadores = [];
+    let contadorColor = { azul: 0, rojo: 0 };
+
+    function iniciarTurnos() {
+      const nombre1 = document.getElementById('jugador1').value;
+      const nombre2 = document.getElementById('jugador2').value;
+      jugadores = [
+        { nombre: nombre1, color: 'azul' },
+        { nombre: nombre2, color: 'rojo' }
+      ];
+      contadorColor = { azul: 0, rojo: 0 };
+      document.querySelector('.input-names').style.display = 'none';
+      document.getElementById('turn-container').style.display = 'block';
+      siguienteTurno();
+    }
+
+    function siguienteTurno() {
+      let siguiente;
+      do {
+        siguiente = Math.random() < 0.5 ? 'azul' : 'rojo';
+      } while (contadorColor[siguiente] >= 2);
+
+      contadorColor[siguiente]++;
+      const otro = siguiente === 'azul' ? 'rojo' : 'azul';
+      contadorColor[otro] = 0;
+
+      const jugador = jugadores.find(j => j.color === siguiente);
+      const box = document.getElementById('turn-box');
+
+      box.style.transform = 'scale(0)';
+
+      setTimeout(() => {
+        box.style.background = siguiente === 'azul' ? '#007BFF' : '#DC3545';
+        box.textContent = jugador.nombre;
+        box.style.transform = 'scale(1)';
+      }, 300);
+    }
+  </script>
+</body>
+</html>

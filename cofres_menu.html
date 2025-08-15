@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú de Cofres</title>
+  <style>
+    body { background: #111; color: white; font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+    .btn { padding: 15px 25px; margin: 15px; border: none; border-radius: 10px; cursor: pointer; font-size: 18px; color: white; }
+    .comun-btn { background: #bbb; color: #222; }
+    .raro-btn { background: #00c8ff; }
+    .legendario-btn { background: gold; color: #222; }
+    .menu-btn { background: #333; }
+    .btn:hover { opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <h2>Selecciona un Cofre</h2>
+  <button class="btn comun-btn" onclick="location.href='cofre_comun.html'">Cofre Común</button>
+  <button class="btn raro-btn" onclick="location.href='cofre_raro.html'">Cofre Raro</button>
+  <button class="btn legendario-btn" onclick="location.href='cofre_legendario.html'">Cofre Legendario</button>
+  <br>
+  <button class="btn menu-btn" onclick="location.href='index.html'">Volver al Menú Principal</button>
+</body>
+</html>
